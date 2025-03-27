@@ -33,4 +33,16 @@ describe("Sidebar", () => {
     expect(sidebar).toHaveStyle("width: 250px");
   });
 
+  test("display icons and titles when the sidebar is opened", () => {
+    render(<Sidebar />);
+
+    const sidebarText = screen.getByText(/Dashboard/i);
+    expect(sidebarText).toBeInTheDocument();
+
+    const sidebarIcons = screen.getAllByRole("img");
+    expect(sidebarIcons.length).toBe(7);
+    // expect(sidebarIcons).toHaveLength(7);
+  });
+
+
 });
