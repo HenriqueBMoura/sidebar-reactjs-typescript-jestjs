@@ -44,5 +44,15 @@ describe("Sidebar", () => {
     // expect(sidebarIcons).toHaveLength(7);
   });
 
+  test("display only icons when the sidebar is closed by clicking the toggle button", () => {
+    render(<Sidebar />);
+
+    const toggleButton = screen.getByRole("button");
+    fireEvent.click(toggleButton);
+
+    const sidebarText = screen.getByText(/Dashboard/i);
+    expect(sidebarText).toHaveStyle("display: none");
+  });
+
 
 });
