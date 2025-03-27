@@ -39,7 +39,7 @@ const menuList: MenuItem[] = [
   },
   {
     icon: <FaSearch />,
-    title: "Pesquisa",
+    title: "Pesquisar",
     path: "/search",
   },
   {
