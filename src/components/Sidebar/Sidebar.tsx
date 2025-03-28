@@ -120,7 +120,7 @@ const Sidebar: React.FC = () => {
       	{isOpen ? "<" : ">"}	
 			</ToggleButton>
       <MenuList>
-        <h2>SideBar Jest Test</h2>
+        <h2>React Test</h2>
 
         {menuList.map((item) => (
           <MenuItemContainer key={item.title} role="img">

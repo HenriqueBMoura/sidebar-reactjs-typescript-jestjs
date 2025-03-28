@@ -7,7 +7,7 @@ describe("Sidebar", () => {
   test("renders the sidebar menu items", () => {
     render(<Sidebar />);
 
-    expect(screen.getByText(/SideBar Jest Test/i)).toBeInTheDocument();
+    expect(screen.getByText(/React Test/i)).toBeInTheDocument();
 
     expect(screen.getByText(/Dashboard/i)).toBeInTheDocument();
     expect(screen.getByText(/Mensagens/i)).toBeInTheDocument();
