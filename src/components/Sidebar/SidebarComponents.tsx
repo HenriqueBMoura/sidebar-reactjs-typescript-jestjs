@@ -4,7 +4,7 @@ export const SidebarContainer = styled.div<{ $isOpen: boolean }>`
 	width: ${(props) => (props.$isOpen ? "250px" : "75px")};
 	height: 100vh;
 	padding: 20px 10px 20px 20px;
-	background-color: #3b0764;
+	background-color: #3E065F;
 	color: #ffffff;
 	transition: width 0.5s ease-in-out;
 	position: relative;
@@ -33,6 +33,16 @@ export const MenuList = styled.ul`
 	margin-top: 20px;
 `;
 
+export const SidebarTitle = styled.h2<{ $isOpen: boolean }>`
+  font-size: 24px;
+  margin-bottom: 30px;
+  padding: 10px;
+  &:before {
+    content: "${props => props.$isOpen ? 'Testing' : 'Test'}";
+  }
+`;
+
+
 export const MenuItemContainer = styled.li`
 	display: flex;
 	align-items: center;
@@ -44,8 +54,8 @@ export const MenuItemContainer = styled.li`
 	transition: background-color 0.3s;
 
 	&:hover {
-		background-color: #ffffff;
-		color: #3b0764;
+		background-color: #8E05C2;
+		color: #ffffff;
 	}
 		
 	svg {
