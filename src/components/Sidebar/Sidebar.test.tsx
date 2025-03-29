@@ -1,11 +1,16 @@
+import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import "@testing-library/jest-dom";
-import React from "react";
+
+const renderWithRouter = (component: React.ReactElement) => {
+  return render(<BrowserRouter>{component}</BrowserRouter>);
+};
 
 describe("Sidebar", () => {
   test("renders the sidebar menu items", () => {
-    render(<Sidebar />);
+    renderWithRouter(<Sidebar />);
 
     // expect(screen.getByText(/React Test/i)).toBeInTheDocument();
     expect(screen.getByText(/Dashboard/i)).toBeInTheDocument();
@@ -18,7 +23,7 @@ describe("Sidebar", () => {
   });
 
   test("toggles the sidebar when the toggle button is clicked", () => {
-    render(<Sidebar />);
+    renderWithRouter(<Sidebar />);
 
     const toggleButton = screen.getByRole("button");
     const sidebar = screen.getByTestId("sidebar-container");
@@ -33,7 +38,7 @@ describe("Sidebar", () => {
   });
 
   test("display icons and titles when the sidebar is opened", () => {
-    render(<Sidebar />);
+    renderWithRouter(<Sidebar />);
 
     const sidebarText = screen.getByText(/Dashboard/i);
     expect(sidebarText).toBeInTheDocument();
@@ -44,7 +49,7 @@ describe("Sidebar", () => {
   });
 
   test("display only icons when the sidebar is closed by clicking the toggle button", () => {
-    render(<Sidebar />);
+    renderWithRouter(<Sidebar />);
 
     const toggleButton = screen.getByRole("button");
     fireEvent.click(toggleButton);
@@ -52,5 +57,4 @@ describe("Sidebar", () => {
     const sidebarText = screen.getByText(/Dashboard/i);
     expect(sidebarText).toHaveStyle("display: none");
   });
-
 });
