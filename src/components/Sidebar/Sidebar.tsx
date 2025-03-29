@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   SidebarContainer,
   SidebarText,
@@ -13,6 +13,8 @@ import menuList from "./SidebarData";
 
 const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const location = useLocation();
+
   return (
     <SidebarContainer data-testid="sidebar-container" $isOpen={isOpen}>
       <ToggleButton onClick={() => setIsOpen(!isOpen)}>
@@ -26,6 +28,7 @@ const Sidebar: React.FC = () => {
             as={Link}
             to={item.path}
             role="img"
+            $isActive={location.pathname === item.path}
           >
             {item.icon}
             <SidebarText $isOpen={isOpen}>{item.title}</SidebarText>
