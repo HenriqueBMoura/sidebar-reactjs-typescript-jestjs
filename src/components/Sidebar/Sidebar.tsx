@@ -5,6 +5,7 @@ import {
   ToggleButton,
   MenuList,
   MenuItemContainer,
+  SidebarTitle,
 } from "./SidebarComponents";
 
 import menuList from "./SidebarData";
@@ -17,8 +18,7 @@ const Sidebar: React.FC = () => {
         {isOpen ? "<" : ">"}
       </ToggleButton>
       <MenuList>
-        <h2>React Test</h2>
-
+        <SidebarTitle $isOpen={isOpen} role="heading" />
         {menuList.map((item) => (
           <MenuItemContainer key={item.title} role="img">
             {item.icon}
