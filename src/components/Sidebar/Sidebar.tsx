@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   SidebarContainer,
   SidebarText,
@@ -20,7 +21,12 @@ const Sidebar: React.FC = () => {
       <MenuList>
         <SidebarTitle $isOpen={isOpen} role="heading" />
         {menuList.map((item) => (
-          <MenuItemContainer key={item.title} role="img">
+          <MenuItemContainer
+            key={item.title}
+            as={Link}
+            to={item.path}
+            role="img"
+          >
             {item.icon}
             <SidebarText $isOpen={isOpen}>{item.title}</SidebarText>
           </MenuItemContainer>
