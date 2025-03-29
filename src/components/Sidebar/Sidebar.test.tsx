@@ -4,7 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import "@testing-library/jest-dom";
 
-const renderWithRouter = (component: React.ReactElement) => {
+const renderWithRouter = (component: React.ReactElement, { route = "/" } = {}) => {
+  window.history.pushState({}, "Test page", route);
   return render(<BrowserRouter>{component}</BrowserRouter>);
 };
 
@@ -56,5 +57,12 @@ describe("Sidebar", () => {
 
     const sidebarText = screen.getByText(/Dashboard/i);
     expect(sidebarText).toHaveStyle("display: none");
+  });
+
+  test("highlights active menu item", () => {
+    renderWithRouter(<Sidebar />, { route: "/dashboard" });
+    
+    const dashboardItem = screen.getByText(/Dashboard/i).closest('a');
+    expect(dashboardItem).toHaveStyle('background-color: #700B97');
   });
 });
